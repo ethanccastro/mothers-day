@@ -98,3 +98,289 @@ footer {
         /* width: calc(33.333% - 20px); */
     }
 }
+
+.main-nav {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #f8f8f8; /* Light grey background for nav */
+    border-bottom: 1px solid #e0e0e0;
+    margin-bottom: 20px;
+}
+
+.main-nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #d14561; /* Accent color */
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    background-color: #d14561;
+    color: #fff;
+}
+
+
+/* Trivia Specific Styles */
+#trivia-container {
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#question-area h2 {
+    font-size: 1.8em;
+    color: #5d3a3a;
+    margin-bottom: 20px;
+    min-height: 60px; /* To prevent layout jump */
+}
+
+.answer-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.answer-btn {
+    background-color: #ffb6c1; /* Light pink */
+    color: #fff;
+    border: 2px solid transparent;
+    padding: 12px 15px;
+    font-size: 1em;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, border-color 0.3s;
+    font-weight: bold;
+}
+
+.answer-btn:hover {
+    background-color: #e990a1; /* Darker pink */
+    transform: translateY(-2px);
+}
+
+.answer-btn.selected {
+    background-color: #d14561; /* Even darker pink for selected */
+    border-color: #5d3a3a;
+}
+
+.answer-btn:disabled { /* When question is answered */
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.answer-btn.correct-answer-highlight {
+    background-color: #a7d7c5 !important; /* Light green for correct */
+    color: #2e7d32 !important;
+    border-color: #2e7d32 !important;
+}
+.answer-btn.wrong-answer-highlight.selected { /* if user selected this AND it was wrong */
+    background-color: #ef9a9a !important; /* Light red for wrong selected */
+    color: #c62828 !important;
+    border-color: #c62828 !important;
+}
+
+
+#submit-answer-btn,
+#play-again-btn {
+    background-color: #5d3a3a; /* Soft brown */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+}
+
+#submit-answer-btn:hover,
+#play-again-btn:hover {
+    background-color: #4a2e2e; /* Darker brown */
+}
+#submit-answer-btn:disabled {
+    background-color: #c5b1b1;
+    cursor: not-allowed;
+}
+
+
+.feedback {
+    margin-top: 15px;
+    font-size: 1.1em;
+    font-weight: bold;
+    min-height: 25px; /* Prevent layout jump */
+}
+
+.feedback.correct {
+    color: #2e7d32; /* Green */
+}
+
+.feedback.incorrect {
+    color: #c62828; /* Red */
+}
+.feedback.error {
+    color: #ffa000; /* Orange/Yellow for warnings */
+}
+
+#results-area {
+    padding: 20px;
+    text-align: center;
+}
+
+#results-area h2 {
+    color: #d14561; /* Accent pink */
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5em;
+}
+
+#results-area p {
+    font-size: 1.2em;
+    margin: 10px 0;
+    color: #5d3a3a;
+}
+
+#game-over-area, #prize-area {
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+    border: 2px solid #d14561; /* Accent color border */
+    border-radius: 8px;
+    background-color: #fffafb; /* Very light pink */
+}
+
+#game-over-area h2, #prize-area h2 {
+    color: #d14561; /* Accent pink */
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.2em; /* Slightly smaller than main header */
+    margin-bottom: 15px;
+}
+
+#game-over-area p, #prize-area p {
+    font-size: 1.1em;
+    color: #5d3a3a;
+    margin: 10px 0;
+}
+
+#restart-quiz-btn, #reveal-prize-btn, #play-again-from-prize-btn {
+    background-color: #5d3a3a; /* Soft brown */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+}
+
+#restart-quiz-btn:hover, #reveal-prize-btn:hover, #play-again-from-prize-btn:hover {
+    background-color: #4a2e2e; /* Darker brown */
+}
+
+#reveal-prize-btn:disabled {
+    background-color: #c5b1b1;
+    cursor: not-allowed;
+}
+
+#prize-reveal-text {
+    font-size: 1.3em;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+#prize-image-container img {
+    display: block;
+    margin: 15px auto 0;
+    max-width: 90%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* ... (all your existing styles) ... */
+
+/* Streak Display */
+.streak-info {
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #5d3a3a;
+    margin-bottom: 15px;
+    padding: 8px;
+    background-color: #fff0f5; /* Light pink to stand out a bit */
+    border-radius: 5px;
+    border: 1px solid #e990a1;
+    text-align: center; /* Center the streak text */
+}
+
+/* Styles for Quiz Finished No Prize Area */
+#quiz-finished-no-prize-area {
+    padding: 20px;
+    text-align: center;
+    margin-top: 20px;
+    border: 2px solid #777; /* Neutral border */
+    border-radius: 8px;
+    background-color: #f9f9f9; /* Light grey */
+}
+
+#quiz-finished-no-prize-area h2 {
+    color: #5d3a3a; /* Soft brown */
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.2em;
+    margin-bottom: 15px;
+}
+
+#quiz-finished-no-prize-area p {
+    font-size: 1.1em;
+    color: #555;
+    margin: 10px 0;
+}
+
+#restart-quiz-final-btn { /* Style like other primary action buttons */
+    background-color: #5d3a3a;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+}
+
+#restart-quiz-final-btn:hover {
+    background-color: #4a2e2e;
+}
+
+/* Ensure header reflects the new rule */
+header p {
+    font-size: 1.2em;
+    margin: 0;
+}
+
+.answer-btn.selected {
+    /* This style will be very brief as feedback (correct/incorrect) happens quickly */
+    /* You might not even need a strong visual for 'selected' if the correct/incorrect highlight is clear enough */
+    /* Example: */
+    /* border-color: #5d3a3a; */
+    /* transform: scale(1.02); */ /* Slight scale to show click */
+    /* box-shadow: 0 0 8px rgba(93, 58, 58, 0.5); */
+}
+
+/* Ensure disabled styles are clear */
+.answer-btn:disabled {
+    opacity: 0.7; /* Default for general disabled */
+    cursor: not-allowed;
+}
+
+/* The correct/incorrect highlight styles will override general disabled opacity if needed */
+.answer-btn.correct-answer-highlight:disabled,
+.answer-btn.wrong-answer-highlight:disabled {
+    opacity: 1; /* Ensure highlighted buttons are fully visible */
+}

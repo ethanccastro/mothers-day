@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mother's Day Trivia!</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Mother's Day Trivia</h1>
+        <p>Get 3 correct answers in a row to win a prize!</p>
+    </header>
+
+    <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="trivia.html" class="active">Trivia Game</a>
+    </nav>
+
+    <main id="trivia-container">
+        <div id="question-area">
+            <div id="streak-display" class="streak-info">
+                Points: <span id="current-streak-count">0</span> / 3
+            </div>
+            <h2 id="question-text">Question will load here...</h2>
+            <div id="answer-options" class="answer-options">
+            </div>
+            <p id="feedback-text" class="feedback"></p>
+        </div>
+
+        <div id="prize-area" style="display: none;">
+            <h2>Yayyyyy you know your own mommy! Congratulations!</h2>
+            <p>You got 3 correct answers in a row! Mommy must be so proud! Hopefully nobody helped you!</p>
+            <button id="reveal-prize-btn">Tap to get a random prize from mommy!</button>
+            <p id="prize-reveal-text" class="feedback"></p>
+            <div id="prize-image-container" style="margin-top: 15px;"></div>
+            <button id="play-again-from-prize-btn">Play Again</button>
+        </div>
+        <div id="quiz-finished-no-prize-area" style="display: none;">
+            <h2>Quiz Complete!</h2>
+            <p>You finished all the questions. Better luck next time achieving a 3-streak!</p>
+            <p>Your longest streak was: <span id="longest-streak-overall">0</span>.</p>
+            <button id="restart-quiz-final-btn">Try Again</button>
+        </div>        
+    </main>
+
+    <script src="trivia-script.js"></script>
+</body>
+</html>
