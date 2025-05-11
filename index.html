@@ -8,9 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>2025 Happy Mother's Day!</h1>
-        <p>Celebrating the GREATEST mother of all time!</p>
+    <header id="index-header-text">        
     </header>
 
     <nav class="main-nav">
@@ -18,9 +16,15 @@
         <a href="trivia.html">Trivia Game</a>
     </nav>
 
+    <nav class="main-nav">
+        <a href="index.html" onclick="changeLanguage('en')">English</a>
+        <a href="index.html" onclick="changeLanguage('sp')">Espanol</a>
+    </nav>
+
     <main id="gallery-container">
     </main>
 
-    <script src="script.js"></script>
+    <script src="index-script.js"></script>
+    <script src="lang.script.js"></script>
 </body>
 </html>

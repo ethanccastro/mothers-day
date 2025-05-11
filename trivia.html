@@ -8,9 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>Mother's Day Trivia</h1>
-        <p>Get 3 correct answers in a row to win a prize!</p>
+    <header id="trivia-header-area">
     </header>
 
     <nav class="main-nav">
@@ -30,8 +28,8 @@
         </div>
 
         <div id="prize-area" style="display: none;">
-            <h2>Yayyyyy you know your own mommy! Congratulations!</h2>
-            <p>You got 3 correct answers in a row! Mommy must be so proud! Hopefully nobody helped you!</p>
+            <div id="prize-area-text">
+            </div>
             <button id="reveal-prize-btn">Tap to get a random prize from mommy!</button>
             <p id="prize-reveal-text" class="feedback"></p>
             <div id="prize-image-container" style="margin-top: 15px;"></div>

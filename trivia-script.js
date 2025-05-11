@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', function() {
+    const triviaHeaderArea = document.getElementById('trivia-header-area');
+
     const questionTextElement = document.getElementById('question-text');
     const answerOptionsElement = document.getElementById('answer-options');
     // const submitAnswerBtn = document.getElementById('submit-answer-btn'); // REMOVED/NOT USED
@@ -9,6 +11,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const questionArea = document.getElementById('question-area');
     const prizeArea = document.getElementById('prize-area');
+    const prizeAreaText = document.getElementById('prize-area-text');
     const revealPrizeBtn = document.getElementById('reveal-prize-btn');
     const prizeRevealTextElement = document.getElementById('prize-reveal-text');
     const prizeImageContainer = document.getElementById('prize-image-container');
@@ -18,7 +21,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const longestStreakOverallElement = document.getElementById('longest-streak-overall');
     const restartQuizFinalBtn = document.getElementById('restart-quiz-final-btn');
 
-    let triviaQuestions = [
+    let triviaQuestions = [];
+    let prizes = [];
+    const triviaQuestionsEnglish = [
         { question: "Favorite color?", options: ["Blue", "Green", "Purple", "Yellow"], correctAnswer: "Blue" },
         { question: "Birth year?", options: ["1992", "1993", "1996", "1995"], correctAnswer: "1995" },
         { question: "Favorite WWE superstar?", options: ["OTC", "John Cena", "Rhea Ripley", "Cody Rhodes"], correctAnswer: "Rhea Ripley" },
@@ -27,11 +32,56 @@ document.addEventListener('DOMContentLoaded', function() {
         { question: "Favorite hobby?", options: ["Watching TIK TOK", "Watching Disney", "Watching WWE", "Watching Netflix"], correctAnswer: "Watching TIK TOK" },
         { question: "Favorite drink?", options: ["Arizona Ice Tea", "Caramel Latte", "Margarita", "Boba"], correctAnswer: "Arizona Ice Tea" },
     ];
-
-    const prizes = [
+    const triviaQuestionsSpanish = [
+        { question: "¿Color favorito?", options: ["Azul", "Verde", "Morado", "Amarillo"], correctAnswer: "Azul" },
+        { question: "¿Año de nacimiento?", options: ["1992", "1993", "1996", "1995"], correctAnswer: "1995" },
+        { question: "¿Superestrella favorita de la WWE?", options: ["OTC", "John Cena", "Rhea Ripley", "Cody Rhodes"], correctAnswer: "Rhea Ripley" },
+        { question: "¿Estatura?", options: ["4'11\"", "5'0\"", "5'1\"", "5'2\""], correctAnswer: "5'0\"" },
+        { question: "¿Comida favorita?", options: ["Camarones", "Carne grasosa", "Coco", "¡¡Pizza!!"], correctAnswer: "Camarones" },
+        { question: "¿Pasatiempo favorito?", options: ["Ver TikTok", "Ver Disney", "Ver WWE", "Ver Netflix"], correctAnswer: "Ver TikTok" },
+        { question: "¿Bebida favorita?", options: ["Té Helado Arizona", "Latte de Caramelo", "Margarita", "Boba"], correctAnswer: "Té Helado Arizona" }
+    ];  
+    const triviaHeaderAreaEnglish = `
+        <h1>Mother's Day Trivia</h1>
+        <p>Get 3 correct answers in a row to win a prize!</p>
+        `   
+    const triviaHeaderAreaSpanish = `
+        <h1>Trivia del Día de la Madre</h1>
+        <p>¡Consigue 3 respuestas correctas seguidas para ganar un premio!</p>
+    `           
+    const prizesEnglish = [
         { name: "A Giant Hug!", image: null },
         { name: "A Giant Kiss On The Cheek!", image: null }
     ];
+    const prizesSpanish = [
+        { name: "¡Un Abrazo Gigante!", image: null },
+        { name: "¡Un Beso Gigante En La Mejilla!", image: null }
+    ];        
+
+    const prizeAreaTextEnglish = 
+    `
+        <h2>Yayyyyy you know your own mommy! Congratulations!</h2>
+        <p>You got 3 correct answers in a row! Mommy must be so proud! Hopefully nobody helped you!</p>
+    `
+    const prizeAreaTextSpanish =
+    `
+        <h2>¡Yupi, conoces bien a tu mami! ¡Felicitaciones!</h2>
+        <p>¡Acertaste 3 respuestas correctas seguidas! ¡Mami debe estar muy orgullosa! ¡Ojalá que nadie te haya ayudado!</p>
+    `    
+
+
+    if (localStorage.getItem("lang") == "en") {
+        triviaQuestions = triviaQuestionsEnglish;
+        prizes = prizesEnglish;
+        triviaHeaderArea.innerHTML =  triviaHeaderAreaEnglish;      
+        prizeAreaText.innerHTML = prizeAreaTextEnglish;
+    }
+    if (localStorage.getItem("lang") == "sp") {
+        triviaQuestions = triviaQuestionsSpanish;
+        prizes = prizesSpanish;
+        triviaHeaderArea.innerHTML = triviaHeaderAreaSpanish;
+        prizeAreaText.innerHTML = prizeAreaTextSpanish;
+    } 
 
     const TARGET_STREAK = 3;
     let currentQuestionIndex = 0;
@@ -67,7 +117,15 @@ document.addEventListener('DOMContentLoaded', function() {
         prizeArea.style.display = 'none';
         quizFinishedNoPrizeArea.style.display = 'none';
         revealPrizeBtn.disabled = false;
-        revealPrizeBtn.textContent = "Click to Reveal Your Prize!";
+
+        if (localStorage.getItem("lang") == "en") {
+            revealPrizeBtn.textContent = "Click to Reveal Your Prize!";
+
+        }
+        if (localStorage.getItem("lang") == "sp") {
+            revealPrizeBtn.textContent = "Haz clic para revelar tu premio!";
+
+        } 
 
         updateStreakDisplay();
         loadQuestion();
@@ -127,9 +185,16 @@ document.addEventListener('DOMContentLoaded', function() {
         if (isCorrect) {
             consecutiveCorrectCount++;
             if (consecutiveCorrectCount > overallLongestStreak) {
-                overallLongestStreak = consecutiveCorrectCount;
+                overallLongestStreak = consecutiveCorrectCount;            
             }
-            feedbackTextElement.textContent = "Correct!";
+            if (localStorage.getItem("lang") == "en") {
+                feedbackTextElement.textContent = "Correct!";
+    
+            }
+            if (localStorage.getItem("lang") == "sp") {
+                feedbackTextElement.textContent = "Correcto!";    
+            } 
+
             feedbackTextElement.className = 'feedback correct';
 
             if (consecutiveCorrectCount === TARGET_STREAK) {
@@ -144,7 +209,15 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         } else {
             consecutiveCorrectCount = 0;
-            feedbackTextElement.textContent = `Incorrect. The correct answer was: ${currentQuestion.correctAnswer}. Streak reset!`;
+
+            if (localStorage.getItem("lang") == "en") {
+                feedbackTextElement.textContent = `Incorrect. The correct answer was: ${currentQuestion.correctAnswer}. Streak reset!`;
+    
+            }
+            if (localStorage.getItem("lang") == "sp") {
+                feedbackTextElement.textContent = `Incorrecto. La respuesta correcta era: ${currentQuestion.correctAnswer}. ¡Racha reiniciada!!`;    
+            } 
+
             feedbackTextElement.className = 'feedback incorrect';
             setTimeout(() => {
                 currentQuestionIndex++;
@@ -161,14 +234,30 @@ document.addEventListener('DOMContentLoaded', function() {
         prizeRevealTextElement.textContent = '';
         prizeImageContainer.innerHTML = '';
         revealPrizeBtn.disabled = false;
-        revealPrizeBtn.textContent = "Click to Reveal Your Prize!";
+
+        if (localStorage.getItem("lang") == "en") {
+            revealPrizeBtn.textContent = "Click to Reveal Your Prize!";
+
+        }
+        if (localStorage.getItem("lang") == "sp") {
+            revealPrizeBtn.textContent = "Haz clic para revelar tu premio!";
+
+        } 
     }
 
     revealPrizeBtn.addEventListener('click', function() {
         if (prizes.length > 0) {
             const randomIndex = Math.floor(Math.random() * prizes.length);
             const selectedPrize = prizes[randomIndex];
-            prizeRevealTextElement.textContent = `Your Prize: ${selectedPrize.name}`;
+
+            if (localStorage.getItem("lang") == "en") {
+                prizeRevealTextElement.textContent = `Your Prize: ${selectedPrize.name}`;    
+            }
+            if (localStorage.getItem("lang") == "sp") {
+                prizeRevealTextElement.textContent = `Tu premio: ${selectedPrize.name}`;    
+            } 
+
+
             prizeRevealTextElement.className = 'feedback correct';
             if (selectedPrize.image) {
                 const img = document.createElement('img');
