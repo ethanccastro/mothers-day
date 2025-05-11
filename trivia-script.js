@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
+    if (localStorage.getItem("lang") === null) {
+        localStorage.setItem("lang", "en");
+      }        
     const triviaHeaderArea = document.getElementById('trivia-header-area');
 
     const questionTextElement = document.getElementById('question-text');

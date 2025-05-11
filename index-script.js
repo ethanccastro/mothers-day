@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
+    if (localStorage.getItem("lang") === null) {
+        localStorage.setItem("lang", "en");
+      }           
     let motherDayItems = [];
     const galleryContainer = document.getElementById('gallery-container'); 
     const indexHeaderText = document.getElementById('index-header-text');
